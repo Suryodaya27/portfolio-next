@@ -17,7 +17,7 @@ export default function Skills_phone() {
           <div className="flex flex-wrap gap-2">
             {languages.map((language) => {
               return (
-                <Card className="flex justify-center">
+                <Card className="flex justify-center" key={language}>
                   <CardHeader>
                     <CardTitle className="text-sm">{language}</CardTitle>
                   </CardHeader>
@@ -35,7 +35,7 @@ export default function Skills_phone() {
           <div className="flex flex-wrap gap-2">
             {frontend.map((language) => {
               return (
-                <Card className="flex justify-center">
+                <Card className="flex justify-center" key={language}>
                   <CardHeader>
                     <CardTitle className="text-sm">{language}</CardTitle>
                   </CardHeader>
@@ -53,7 +53,7 @@ export default function Skills_phone() {
           <div className="flex flex-wrap gap-2">
             {backend.map((language) => {
               return (
-                <Card className="flex justify-center">
+                <Card className="flex justify-center" key={language}>
                   <CardHeader>
                     <CardTitle className="text-sm">{language}</CardTitle>
                   </CardHeader>

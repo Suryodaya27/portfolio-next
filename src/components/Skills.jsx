@@ -25,7 +25,7 @@ export default function Skills() {
           <div className="my-3 flex gap-3">
             {languages.map((language) => {
               return (
-                <Card>
+                <Card key={language}>
                   <CardHeader>
                     <CardTitle>{language}</CardTitle>
                   </CardHeader>
@@ -42,7 +42,7 @@ export default function Skills() {
           <div className="my-3 flex gap-3">
             {frontend.map((language) => {
               return (
-                <Card>
+                <Card key={language}>
                   <CardHeader>
                     <CardTitle>{language}</CardTitle>
                   </CardHeader>
@@ -59,7 +59,7 @@ export default function Skills() {
           <div className="my-3 flex gap-3">
             {backend.map((language) => {
               return (
-                <Card>
+                <Card key={language}>
                   <CardHeader>
                     <CardTitle>{language}</CardTitle>
                   </CardHeader>

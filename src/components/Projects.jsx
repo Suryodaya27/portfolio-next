@@ -110,7 +110,7 @@ export default function Project() {
       >
         {projects.map((project) => {
           return (
-            <motion.div className="w:1/2 md:w-1/4 " variants={item}>
+            <motion.div className="w:1/2 md:w-1/4 " variants={item} key={project.title}>
               <Card>
                 <CardHeader>
                   <CardTitle>{project.title}</CardTitle>

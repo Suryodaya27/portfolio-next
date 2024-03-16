@@ -48,7 +48,7 @@ export default function Profiles_phone() {
       {profiles.map((profile) => {
         return (
           <>
-            <div className="">
+            <div key={profile.name}>
               <Card className="w-[300px]">
                 <CardHeader>
                   <CardTitle>

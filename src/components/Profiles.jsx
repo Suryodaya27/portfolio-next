@@ -49,7 +49,7 @@ export default function Profiles() {
     <div className=" flex flex-col md:flex-row gap-4 my-5">
       {profiles.map((profile) => {
         return (
-            <HoverCard>
+            <HoverCard key={profile.name}>
                 <HoverCardTrigger>
                     <motion.div
                         whileHover={{ scale: 1.2, rotate: 360 }}

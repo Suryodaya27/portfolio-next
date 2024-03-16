@@ -46,13 +46,13 @@ export default function Mainhero() {
         className="flex flex-col gap-7 justify-center "
       >
         <div className="mx-10 mt-10 md:mt-0  md:mx-0 text-2xl font-medium">
-          Hello there,It's me 👋
+          Hello there,It&apos;s me 👋
         </div>
         <div className="mx-10 text-4xl md:mx-0 md:text-6xl text-sky-800 font-semibold">
           Suryodaya Pandey
         </div>
         <div className=" mx-10 text-xl md:mx-0 md:text-3xl font-semibold">
-          I'm a <span className="text-red-600">Fullstack developer</span> 🚀
+          I&apos;m a <span className="text-red-600">Fullstack developer</span> 🚀
         </div>
         <motion.div
           whileHover={{
