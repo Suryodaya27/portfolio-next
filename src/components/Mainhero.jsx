@@ -9,6 +9,7 @@ import { TriangleRightIcon } from "@radix-ui/react-icons";
 import { easeIn, motion } from "framer-motion";
 import Profiles from "@/components/Profiles";
 import Profiles_phone from "@/components/Profiles_phone";
+import Link from "next/link";
 
 export default function Mainhero() {
   return (
@@ -52,23 +53,20 @@ export default function Mainhero() {
           Suryodaya Pandey
         </div>
         <div className=" mx-10 text-xl md:mx-0 md:text-3xl font-semibold">
-          I&apos;m a <span className="text-red-600">Fullstack developer</span> 🚀
+          I&apos;m a <span className="text-red-600">Fullstack developer</span>{" "}
+          🚀
         </div>
-        <motion.div
-          whileHover={{
-            borderRadius: "100%",
-          }}
-          className="mt-5 mx-10 md:mx-0"
-        >
-          <a href="/about"><Button
-            variant="outline"
-            className="bg-blue-700  hover:bg-blue-600 hover:text-white text-white shadow-sm"
-            size="lg"
-          >
-            More About Me &nbsp; <TriangleRightIcon />
-          </Button>
-          </a>
-        </motion.div>
+        <div className="mt-3 mx-10 md:mx-0">
+          <Link href="/about">
+            <Button
+              variant="outline"
+              className="bg-blue-700  hover:bg-blue-600 hover:text-white text-white shadow-sm"
+              size="lg"
+            >
+              More About Me &nbsp; <TriangleRightIcon />
+            </Button>
+          </Link>
+        </div>
         <div className="hidden md:block">
           <Profiles />
         </div>

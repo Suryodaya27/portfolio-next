@@ -16,32 +16,21 @@ export default function Navbar() {
 
   return (
     <div>
-      <div className="py-3 md:py-3 md:my-2 md:px-20 flex flex-row gap-5 justify-between">
+      <div className="mx-5 py-3 md:py-3 md:my-2 md:px-20 flex flex-row gap-5 justify-between items-center">
         <Link
           href="/"
-          className=" flex items-center space-x-2 font-medium text-xl"
+          className=" flex items-center space-x-2 font-medium text-xl rounded-md p-2 shadow-md text-blue-900"
         >
-          Suryodaya
+          SP
         </Link>
-        <nav className="flex items-center gap-6 text-sm">
-          {/* <Link
-            href="/"
-            className={cn(
-              "transition-colors hover:text-foreground/80",
-              pathname === "/"
-                ? "text-foreground px-4 py-2 bg-blue-300 rounded-md"
-                : "text-foreground/60"
-            )}
-          >
-            Home
-          </Link> */}
+        <nav className="flex items-center gap-6 lg:gap-10 text-sm lg:text-base">
           <Link
             href="/about"
             className={cn(
               "transition-colors hover:text-foreground/80",
               pathname === "/about"
                 ? "text-foreground px-4 py-2 bg-blue-300 rounded-md"
-                : "text-foreground/30"
+                : "text-foreground/30 px-4 py-2"
             )}
           >
             About
@@ -52,7 +41,7 @@ export default function Navbar() {
               "transition-colors hover:text-foreground/80",
               pathname === "/projects"
                 ? "text-foreground px-4 py-2 bg-blue-300 rounded-md"
-                : "text-foreground/60"
+                : "text-foreground/60 px-4 py-2"
             )}
           >
             Projects
@@ -60,8 +49,9 @@ export default function Navbar() {
         </nav>
         <div>
           <Button
-            variant="outline"
+            variant="destructive"
             size="sm"
+            className="shadow-sm lg:px-5 lg:py-5 "
             // onclicking button link to drive link for resume on new window like href
             onClick={() =>
               window.open(

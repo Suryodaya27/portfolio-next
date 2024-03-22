@@ -2,6 +2,9 @@ import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { TriangleRightIcon } from "@radix-ui/react-icons";
 import { motion } from "framer-motion";
 
+import c from "@/assets/skill_icons/c-.png"
+import Image from "next/image";
+
 export default function Skills() {
   const languages = ["C++", "JavaScript"];
   const frontend = ["React", "Next.js", "HTML", "CSS", "Tailwind CSS"];

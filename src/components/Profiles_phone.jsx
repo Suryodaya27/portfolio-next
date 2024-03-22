@@ -8,11 +8,7 @@ import {
   TwitterLogoIcon,
 } from "@radix-ui/react-icons";
 import Image from "next/image";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 
 const profiles = [
   {
@@ -49,16 +45,16 @@ export default function Profiles_phone() {
         return (
           <>
             <div key={profile.name}>
-              <Card className="w-[300px]">
-                <CardHeader>
-                  <CardTitle>
-                    <a href={profile.link_element} target="_blank">
-                      <span>{profile.name}</span>
-                    </a>
-                  </CardTitle>
-                  
-                </CardHeader>
-              </Card>
+              <a href={profile.link_element} target="_blank">
+                <Card className="w-[300px]">
+                  <CardHeader>
+                    <CardTitle className="flex gap-3">
+                      <div>{profile.icon_element}</div>
+                      <div><span>{profile.name}</span></div>
+                    </CardTitle>
+                  </CardHeader>
+                </Card>
+              </a>
             </div>
           </>
         );
