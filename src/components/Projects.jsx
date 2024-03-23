@@ -21,7 +21,7 @@ export default function Project() {
         "Generates mcq on users input data and it is a web-based platform designed to offer users an engaging way to test their knowledge",
       imageSrc: "https://img.icons8.com/?size=80&id=114416&format=png",
       liveLink: "https://prep-buddy-next.vercel.app",
-      githubLink: "https://github.com/Suryodaya27/prpe-buddy-next",
+      githubLink: "https://github.com/Suryodaya27/prep-buddy-next",
     },
     {
       id: 2,
@@ -101,33 +101,39 @@ export default function Project() {
   };
   return (
     <div className="p-5 ">
-      <div className="text-2xl font-semibold text-center my-3">Projects</div>
+      <div className="text-3xl font-semibold text-center my-3">Projects</div>
       <motion.div
-        className=" flex flex-wrap justify-center gap-5"
+        className=" flex flex-wrap justify-center gap-5 pb-5"
         variants={container}
         initial="hidden"
         animate="visible"
       >
         {projects.map((project) => {
           return (
-            <motion.div className="w:1/2 md:w-1/4 " variants={item} key={project.title}>
+            <motion.div
+              className="w:1/2 md:w-1/4 "
+              variants={item}
+              key={project.title}
+            >
               <Card>
                 <CardHeader>
-                  <CardTitle>{project.title}</CardTitle>
+                  <CardTitle className="flex flex-col gap-4 justify-center">
+                    <div className="flex justify-center">
+                      <Image src={project.imageSrc} height={40} width={40} />
+                    </div>
+                    <div>{project.title}</div>
+                  </CardTitle>
                   <CardDescription className="h-[60px]">
                     {project.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <Image src="" height={30} width={30} />
-                </CardContent>
-                <CardFooter className="flex gap-3">
-                  <Button>
+                <CardFooter className="flex gap-3 mt-3">
+                  <Button size="sm" className="bg-blue-700 hover:bg-blue-950">
                     <a href={project.liveLink} target="_blank">
                       Link
                     </a>
                   </Button>
-                  <Button variant="outline">
+                  <Button size="sm" variant="destructive">
                     <a href={project.githubLink} target="_blank">
                       Github
                     </a>

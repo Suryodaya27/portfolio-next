@@ -8,7 +8,7 @@ export default function Skills_phone() {
   return (
     <div>
       <div className="text-center mt-10 text-xl underline"> Skills</div>
-      <div className="py-10 mx-10 flex flex-col gap-4">
+      <div className="py-5 mx-10 flex flex-col gap-4">
         <div>
           <div className="flex gap-1 items-center font-medium text-lg">
             <TriangleRightIcon />

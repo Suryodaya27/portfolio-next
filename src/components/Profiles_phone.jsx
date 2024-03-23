@@ -40,7 +40,7 @@ const profiles = [
 
 export default function Profiles_phone() {
   return (
-    <div className=" flex flex-col gap-3 items-center justify-center">
+    <div className=" flex flex-col gap-3 items-center justify-center pb-3">
       {profiles.map((profile) => {
         return (
           <>
