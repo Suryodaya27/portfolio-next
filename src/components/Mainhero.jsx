@@ -1,6 +1,7 @@
 "use client";
 
-import right_hero from "@/assets/right_hero.png";
+// import right_hero from "@/assets/right_hero.png";
+import right_hero from "@/assets/images/img6.png";
 
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -78,9 +79,9 @@ export default function Mainhero() {
         initial={{ x: 1000, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ ease: "easeIn", duration: 1 }}
-        className="hidden md:block"
+        className="hidden md:block rounded-md"
       >
-        <Image src={right_hero} height={450} width={450} />
+        <Image src={right_hero} height={425} width={425} className="rounded-md" />
       </motion.div>
     </div>
   );
