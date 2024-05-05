@@ -21,6 +21,9 @@ const nextConfig = {
             {
                 hostname: 'cdn3d.iconscout.com',
                 // Additional configuration options if needed
+            },
+            {
+                hostname: 'cdn.jsdelivr.net',
             }
         ],
     },

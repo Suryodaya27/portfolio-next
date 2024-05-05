@@ -2,13 +2,28 @@ import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { TriangleRightIcon } from "@radix-ui/react-icons";
 import { motion } from "framer-motion";
 
-import c from "@/assets/skill_icons/c-.png"
+import c from "@/assets/skill_icons/c-.png";
 import Image from "next/image";
 
 export default function Skills() {
-  const languages = ["C++", "JavaScript"];
-  const frontend = ["React", "Next.js", "HTML", "CSS", "Tailwind CSS"];
-  const backend = ["Node.js", "Express", "MySQL", "Prisma"];
+  const languages = [
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
+  ];
+  const frontend = [
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+  ];
+  const backend = [
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original-wordmark.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original-wordmark.svg",
+  ];
   return (
     <motion.div
       initial={{ y: 100, opacity: 0 }}
@@ -30,7 +45,9 @@ export default function Skills() {
               return (
                 <Card key={language}>
                   <CardHeader>
-                    <CardTitle>{language}</CardTitle>
+                    <CardTitle>
+                      <Image className="shadow-md" src={language} height={40} width={40} />
+                    </CardTitle>
                   </CardHeader>
                 </Card>
               );
@@ -47,7 +64,9 @@ export default function Skills() {
               return (
                 <Card key={language}>
                   <CardHeader>
-                    <CardTitle>{language}</CardTitle>
+                    <CardTitle>
+                      <Image className="shadow-md" src={language} height={40} width={40} />
+                    </CardTitle>
                   </CardHeader>
                 </Card>
               );
@@ -64,7 +83,9 @@ export default function Skills() {
               return (
                 <Card key={language}>
                   <CardHeader>
-                    <CardTitle>{language}</CardTitle>
+                    <CardTitle>
+                      <Image className="shadow-md" src={language} height={40} width={40} />
+                    </CardTitle>
                   </CardHeader>
                 </Card>
               );
