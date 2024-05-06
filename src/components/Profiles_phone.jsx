@@ -1,6 +1,7 @@
 "use client";
 
 import leetcode from "@/assets/leetcode.svg";
+import instagram from "@/assets/instagram.svg"
 import {
   InstagramLogoIcon,
   GitHubLogoIcon,
@@ -13,7 +14,12 @@ import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 const profiles = [
   {
     name: "Linkedin",
-    icon_element: <LinkedInLogoIcon />,
+    icon_element: (
+      <Image
+        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg"
+        height={15} width={15}
+      />
+    ),
     link_element: "https://www.linkedin.com/in/suryodaya27/",
   },
   {
@@ -23,17 +29,27 @@ const profiles = [
   },
   {
     name: "Github",
-    icon_element: <GitHubLogoIcon />,
+    icon_element:  (
+      <Image
+        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+        height={15} width={15}
+      />
+    ),
     link_element: "https://github.com/Suryodaya27",
   },
   {
     name: "Twitter",
-    icon_element: <TwitterLogoIcon />,
+    icon_element: (
+      <Image
+        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/twitter/twitter-original.svg"
+        height={15} width={15}
+      />
+    ),
     link_element: "https://twitter.com/Suryodaya27",
   },
   {
     name: "Instagram",
-    icon_element: <InstagramLogoIcon />,
+    icon_element: <Image src={instagram} height={15} width={15} />,
     link_element: "https://instagram.com/suryodaya_27/",
   },
 ];
