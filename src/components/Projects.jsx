@@ -15,6 +15,15 @@ import { motion } from "framer-motion";
 export default function Project() {
   const projects = [
     {
+      id: 0,
+      title: "AI Journaling App Backend",
+      description:
+        "Allows users to log daily entries and receive AI-generated summaries, insights, and goal recommendations.",
+      imageSrc: "https://img.icons8.com/?size=100&id=67346&format=png&color=000000",
+      liveLink:"",
+      githubLink: "https://github.com/Suryodaya27/ai-journal-backend",
+    },
+    {
       id: 1,
       title: "Prepbuddy - Mcq generator",
       description:
