@@ -12,12 +12,7 @@ export default function Aboutme_phone() {
       <div className=" text-justify flex flex-col gap-3">
         <div className="text-3xl font-semibold">About Me</div>
         <div>
-          As a full-stack developer, I specialize in crafting innovative
-          solutions that seamlessly integrate technology into daily life. My
-          passion for problem-solving is evident in my consistent top percentile
-          rankings on platforms like LeetCode and Coding Ninjas, with
-          achievements including commendable ranks in LeetCode contests and
-          solving over 800 LeetCode problems.
+           I am a Software Engineer with experience in building scalable automation systems, backend APIs, and AI-driven applications. At Gracenote (Nielsen), I’ve streamlined operations by migrating legacy RPA bots to Python, deploying them on AWS, and developing APIs that improved control and flexibility for business teams. I enjoy solving complex data problems—whether it’s processing unstructured data, optimizing large-scale scripts, or designing intelligent retrieval systems.
         </div>
         <div>
           <span className="font-medium">Location: </span> Mumbai, India.
