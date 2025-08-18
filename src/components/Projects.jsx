@@ -16,6 +16,15 @@ export default function Project() {
   const projects = [
     {
       id: 0,
+      title: "LeetCode + GFG Post Intelligence (Agentic RAG)",
+      description:
+        "Allows users to chat with interview preparation content from LeetCode and GeeksforGeeks.",
+      imageSrc: "https://img.icons8.com/?size=160&id=mQLPbWPnTC19&format=png",
+      liveLink:"",
+      githubLink: "https://github.com/Suryodaya27/rag_interview_experience",
+    },
+    {
+      id: 1,
       title: "AI Journaling App Backend",
       description:
         "Allows users to log daily entries and receive AI-generated summaries, insights, and goal recommendations.",
@@ -24,7 +33,7 @@ export default function Project() {
       githubLink: "https://github.com/Suryodaya27/ai-journal-backend",
     },
     {
-      id: 1,
+      id: 2,
       title: "Prepbuddy - Mcq generator",
       description:
         "Generates mcq on users input data and it is a web-based platform designed to offer users an engaging way to test their knowledge",
@@ -33,7 +42,7 @@ export default function Project() {
       githubLink: "https://github.com/Suryodaya27/prep-buddy-next",
     },
     {
-      id: 2,
+      id: 3,
       title: "Apna Mart - Online Grocery Store",
       description:
         "Platform for users to Buy groceries online with features such as cart updation and razorpay",
@@ -42,7 +51,7 @@ export default function Project() {
       githubLink: "https://github.com/Suryodaya27/marketPoint",
     },
     {
-      id: 3,
+      id: 4,
       title: "TrimTrends - Barber booking site",
       description:
         "Platform for users to discover and book appointments at local barbershops.",
@@ -51,7 +60,7 @@ export default function Project() {
       githubLink: "https://github.com/Suryodaya27/barber",
     },
     {
-      id: 4,
+      id: 5,
       title: "Ecommerce website using ReactJs",
       description:
         "You can browse and see Products in this project, add them to your Cart and Wishlist, and update both your cart and wishlist.",
@@ -61,7 +70,7 @@ export default function Project() {
       githubLink: "https://github.com/Suryodaya27/ecom",
     },
     {
-      id: 5,
+      id: 6,
       title: "NewsApp using ReactJs",
       description:
         "You can browse and see the most recent news for many categories in this project. To retrieve news, the newsapi API was used.",
@@ -71,7 +80,7 @@ export default function Project() {
       githubLink: "https://github.com/Suryodaya27/news",
     },
     {
-      id: 6,
+      id: 7,
       title: "The MovieDB using SveltekitJs",
       description:
         "In this project, the tmdb API was used to retrieve data, and you can utilize the search filter to learn more about any movie.",
@@ -80,7 +89,7 @@ export default function Project() {
       githubLink: "https://github.com/Suryodaya27/movie",
     },
     {
-      id: 7,
+      id: 8,
       title: "Notes Maker",
       description: "You can create, edit, and delete notes in this project.",
       imageSrc:
