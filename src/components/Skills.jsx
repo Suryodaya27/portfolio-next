@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import SectionDivider from "./SectionDivider";
 
 const skillGroups = [
   {
@@ -17,40 +18,70 @@ const skillGroups = [
   },
 ];
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 30, filter: "blur(4px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
+  },
+};
+
+const tagVariant = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { opacity: 1, scale: 1 },
+};
+
 export default function Skills() {
   return (
     <>
-      <div className="flex justify-center py-4">
-        <span className="text-muted-foreground/30 select-none">&middot;</span>
-      </div>
+      <SectionDivider />
       <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={{
+          visible: { transition: { staggerChildren: 0.12 } },
+        }}
         id="skills"
         className="scroll-mt-20 py-16"
       >
-        <h2 className="mb-2 text-sm uppercase tracking-widest text-muted-foreground">
+        <motion.h2
+          variants={fadeUp}
+          className="mb-2 text-sm uppercase tracking-widest text-muted-foreground"
+        >
           Skills
-        </h2>
+        </motion.h2>
         <div className="mt-8 flex flex-col gap-8">
           {skillGroups.map((group) => (
-            <div key={group.label}>
+            <motion.div key={group.label} variants={fadeUp}>
               <h3 className="mb-3 text-xs uppercase tracking-widest text-muted-foreground/70">
                 {group.label}
               </h3>
-              <div className="flex flex-wrap gap-2">
+              <motion.div
+                className="flex flex-wrap gap-2"
+                variants={{
+                  visible: { transition: { staggerChildren: 0.04 } },
+                }}
+              >
                 {group.skills.map((skill) => (
-                  <span
+                  <motion.span
                     key={skill}
-                    className="rounded-sm border border-border px-3 py-1.5 text-sm text-foreground/80 transition-colors hover:border-warm/40 hover:text-warm"
+                    variants={tagVariant}
+                    whileHover={{
+                      scale: 1.05,
+                      borderColor: "hsl(36 80% 55% / 0.5)",
+                      color: "hsl(36 80% 55%)",
+                    }}
+                    transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                    className="cursor-default rounded-sm border border-border px-3 py-1.5 text-sm text-foreground/80 transition-shadow hover:shadow-[0_0_12px_hsl(36_80%_55%/0.15)]"
                   >
                     {skill}
-                  </span>
+                  </motion.span>
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
         </div>
       </motion.section>

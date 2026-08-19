@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import SectionDivider from "./SectionDivider";
 
 const experiences = [
   {
@@ -12,26 +13,51 @@ const experiences = [
   },
 ];
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 30, filter: "blur(4px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
+  },
+};
+
 export default function Experience() {
   return (
     <>
-      <div className="flex justify-center py-4">
-        <span className="text-muted-foreground/30 select-none">&middot;</span>
-      </div>
+      <SectionDivider />
       <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={{
+          visible: { transition: { staggerChildren: 0.15 } },
+        }}
         id="experience"
         className="scroll-mt-20 py-16"
       >
-        <h2 className="mb-2 text-sm uppercase tracking-widest text-muted-foreground">
+        <motion.h2
+          variants={fadeUp}
+          className="mb-2 text-sm uppercase tracking-widest text-muted-foreground"
+        >
           Experience
-        </h2>
+        </motion.h2>
         <div className="mt-8 flex flex-col gap-8">
           {experiences.map((exp) => (
-            <div key={exp.company} className="border-l-2 border-warm/40 pl-6">
+            <motion.div
+              key={exp.company}
+              variants={fadeUp}
+              className="group relative border-l-2 border-warm/40 pl-6"
+            >
+              {/* Animated dot on the border */}
+              <motion.span
+                className="absolute -left-[5px] top-2 h-2 w-2 rounded-full bg-warm"
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4, type: "spring", stiffness: 300 }}
+              />
               <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
                 <h3 className="font-serif text-xl text-foreground">
                   {exp.role}
@@ -44,7 +70,7 @@ export default function Experience() {
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 {exp.description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </motion.section>

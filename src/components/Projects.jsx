@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import SectionDivider from "./SectionDivider";
 
 const projects = [
   {
@@ -64,57 +65,79 @@ const projects = [
   },
 ];
 
-const container = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.06 } },
+const fadeUp = {
+  hidden: { opacity: 0, y: 30, filter: "blur(4px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
+  },
 };
 
-const item = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+const itemVariant = {
+  hidden: { opacity: 0, x: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] },
+  },
 };
 
 export default function Projects() {
   return (
     <>
-      <div className="flex justify-center py-4">
-        <span className="text-muted-foreground/30 select-none">&middot;</span>
-      </div>
+      <SectionDivider />
       <section id="projects" className="scroll-mt-20 py-16">
         <motion.h2
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
+          variants={fadeUp}
           className="mb-2 text-sm uppercase tracking-widest text-muted-foreground"
         >
           Projects
         </motion.h2>
 
         <motion.div
-          className="mt-8 flex flex-col divide-y divide-border"
-          variants={container}
+          className="mt-8 flex flex-col"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: true, amount: 0.1 }}
+          variants={{
+            visible: { transition: { staggerChildren: 0.07 } },
+          }}
         >
           {projects.map((project) => (
             <motion.article
               key={project.title}
-              variants={item}
-              className="group flex flex-col gap-2 py-6 sm:flex-row sm:items-baseline sm:justify-between"
+              variants={itemVariant}
+              whileHover={{ x: 6 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              className="group relative flex flex-col gap-2 border-b border-border/50 py-6 sm:flex-row sm:items-baseline sm:justify-between"
             >
-              <div className="flex-1">
+              {/* Hover glow line */}
+              <span className="absolute left-0 top-0 h-full w-px bg-warm/0 transition-colors group-hover:bg-warm/60" />
+
+              <div className="flex-1 pl-4">
                 <h3 className="flex items-center gap-2 text-base font-medium text-foreground transition-colors group-hover:text-warm">
                   {project.title}
-                  <span className="inline-block translate-x-0 opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100 text-warm">
-                    &rarr;
-                  </span>
+                  <motion.span
+                    className="inline-block text-warm"
+                    initial={{ opacity: 0, x: -5 }}
+                    whileHover={{ opacity: 1, x: 0 }}
+                    animate={{}}
+                  >
+                    <span className="opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-0 group-hover:translate-x-1 inline-block">
+                      &rarr;
+                    </span>
+                  </motion.span>
                 </h3>
                 <p className="mt-1 text-sm text-muted-foreground">
                   {project.description}
                 </p>
               </div>
-              <div className="flex gap-4 pt-2 sm:pt-0 sm:pl-8 shrink-0">
+              <div className="flex gap-4 pl-4 pt-2 sm:pt-0 sm:pl-8 shrink-0">
                 {project.live && (
                   <a
                     href={project.live}
