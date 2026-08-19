@@ -5,6 +5,12 @@ import SectionDivider from "./SectionDivider";
 
 const projects = [
   {
+    title: "LLM Replay",
+    description:
+      "Deterministic replay engine for AI agents. Capture, replay, branch, and judge any LLM session across Ollama, OpenAI, and Anthropic with a web playground.",
+    github: "https://github.com/Suryodaya27/llm-replay",
+  },
+  {
     title: "LeetCode + GFG Post Intelligence",
     description:
       "Agentic RAG system for chatting with interview preparation content from LeetCode and GeeksforGeeks.",
@@ -22,46 +28,6 @@ const projects = [
       "MCQ generator that creates quizzes from user input data for knowledge testing.",
     live: "https://prep-buddy-next.vercel.app",
     github: "https://github.com/Suryodaya27/prep-buddy-next",
-  },
-  {
-    title: "Apna Mart",
-    description:
-      "Online grocery store with cart management and Razorpay payment integration.",
-    live: "https://youtu.be/-JezvLU1dow",
-    github: "https://github.com/Suryodaya27/marketPoint",
-  },
-  {
-    title: "TrimTrends",
-    description:
-      "Platform for discovering and booking appointments at local barbershops.",
-    live: "https://www.youtube.com/watch?v=MQEKdOPNHwI",
-    github: "https://github.com/Suryodaya27/barber",
-  },
-  {
-    title: "E-commerce Store",
-    description:
-      "React-based store with product browsing, cart, and wishlist management.",
-    live: "https://ecommerce-thrift-store.netlify.app/",
-    github: "https://github.com/Suryodaya27/ecom",
-  },
-  {
-    title: "NewsApp",
-    description:
-      "Category-filtered news reader using NewsAPI, built with React.",
-    github: "https://github.com/Suryodaya27/news",
-  },
-  {
-    title: "The MovieDB",
-    description:
-      "SvelteKit app to search and explore movies via TMDB API.",
-    live: "https://movie-iota-lilac.vercel.app/",
-    github: "https://github.com/Suryodaya27/movie",
-  },
-  {
-    title: "Notes Maker",
-    description: "Minimal note-taking app with create, edit, and delete.",
-    live: "https://suryodaya27.github.io/MyNotes-Notes-maker/",
-    github: "https://github.com/Suryodaya27/MyNotes-Notes-maker",
   },
 ];
 
