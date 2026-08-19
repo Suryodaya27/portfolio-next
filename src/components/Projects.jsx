@@ -122,16 +122,9 @@ export default function Projects() {
               <div className="flex-1 pl-4">
                 <h3 className="flex items-center gap-2 text-base font-medium text-foreground transition-colors group-hover:text-warm">
                   {project.title}
-                  <motion.span
-                    className="inline-block text-warm"
-                    initial={{ opacity: 0, x: -5 }}
-                    whileHover={{ opacity: 1, x: 0 }}
-                    animate={{}}
-                  >
-                    <span className="opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-0 group-hover:translate-x-1 inline-block">
-                      &rarr;
-                    </span>
-                  </motion.span>
+                  <span className="inline-block text-warm opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
+                    &rarr;
+                  </span>
                 </h3>
                 <p className="mt-1 text-sm text-muted-foreground">
                   {project.description}

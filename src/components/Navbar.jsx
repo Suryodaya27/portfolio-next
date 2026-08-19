@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import MagneticLink from "./MagneticLink";
 
 export default function Navbar() {
   const links = [
@@ -29,28 +30,34 @@ export default function Navbar() {
 
         <nav className="flex items-center gap-6 sm:gap-8">
           {links.map(({ href, label }, i) => (
-            <motion.a
+            <MagneticLink
               key={href}
               href={href}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 + i * 0.1, duration: 0.4 }}
               className="relative text-sm tracking-wide text-muted-foreground transition-colors hover:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-warm after:transition-all hover:after:w-full"
             >
-              {label}
-            </motion.a>
+              <motion.span
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 + i * 0.1, duration: 0.4 }}
+              >
+                {label}
+              </motion.span>
+            </MagneticLink>
           ))}
-          <motion.a
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.6, duration: 0.4 }}
+          <MagneticLink
             href="https://drive.google.com/file/d/1_rJuBA8_HxgzvyXhOHiKajsB4JFAb8Im/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:inline-block rounded-sm border border-foreground/20 px-4 py-1.5 text-sm tracking-wide text-foreground transition-all hover:border-warm hover:text-warm hover:shadow-[0_0_12px_hsl(36_80%_55%/0.15)]"
           >
-            Resume
-          </motion.a>
+            <motion.span
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.6, duration: 0.4 }}
+            >
+              Resume
+            </motion.span>
+          </MagneticLink>
         </nav>
       </div>
     </motion.header>

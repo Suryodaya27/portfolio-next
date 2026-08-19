@@ -2,6 +2,8 @@ import { Inter } from "next/font/google";
 import { Instrument_Serif } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CursorGlow from "@/components/CursorGlow";
+import PageReveal from "@/components/PageReveal";
 import "./globals.css";
 
 const inter = Inter({
@@ -19,12 +21,17 @@ export const metadata = {
   title: "Suryodaya Pandey — Software Engineer",
   description:
     "Full-stack developer building scalable systems, backend APIs, and AI-driven applications.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${instrumentSerif.variable} scroll-smooth`}>
       <body className="font-sans">
+        <PageReveal />
+        <CursorGlow />
         <Navbar />
         <main className="mx-auto max-w-4xl px-6 pb-24">{children}</main>
         <Footer />

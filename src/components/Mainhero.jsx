@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const socials = [
   { name: "LinkedIn", url: "https://www.linkedin.com/in/suryodaya27/" },
@@ -12,7 +13,7 @@ const socials = [
 const stagger = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.15, delayChildren: 0.2 },
+    transition: { staggerChildren: 0.15, delayChildren: 0.6 },
   },
 };
 
@@ -27,11 +28,27 @@ const fadeUp = {
 };
 
 export default function Mainhero() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+
+  // Parallax: glow moves slower than scroll
+  const glowY1 = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const glowY2 = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
   return (
-    <section className="relative py-16 md:py-24">
-      {/* Ambient glow — positioned relative to viewport edge, not component */}
-      <div className="pointer-events-none fixed top-0 left-0 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-warm/[0.04] blur-[120px]" />
-      <div className="pointer-events-none fixed top-0 right-0 h-[400px] w-[400px] translate-x-1/3 -translate-y-1/4 rounded-full bg-warm/[0.03] blur-[100px]" />
+    <section ref={ref} className="relative py-16 md:py-24">
+      {/* Parallax ambient glow orbs */}
+      <motion.div
+        style={{ y: glowY1 }}
+        className="pointer-events-none fixed top-0 left-0 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-warm/[0.04] blur-[120px]"
+      />
+      <motion.div
+        style={{ y: glowY2 }}
+        className="pointer-events-none fixed top-0 right-0 h-[400px] w-[400px] translate-x-1/3 -translate-y-1/4 rounded-full bg-warm/[0.03] blur-[100px]"
+      />
 
       <motion.div
         variants={stagger}
@@ -50,7 +67,7 @@ export default function Mainhero() {
           variants={fadeUp}
           className="font-serif text-5xl leading-[1.1] tracking-[-0.03em] sm:text-6xl md:text-7xl"
         >
-          Suryodaya Pandey
+          <span className="animated-shimmer">Suryodaya Pandey</span>
         </motion.h1>
 
         <motion.p
@@ -93,7 +110,7 @@ export default function Mainhero() {
               rel="noopener noreferrer"
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1 + i * 0.1, duration: 0.4 }}
+              transition={{ delay: 1.2 + i * 0.1, duration: 0.4 }}
               whileHover={{ y: -2 }}
               className="text-sm text-muted-foreground underline underline-offset-4 decoration-border transition-colors hover:text-warm hover:decoration-warm/40"
             >
