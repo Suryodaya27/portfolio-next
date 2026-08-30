@@ -3,19 +3,31 @@
 import { motion } from "framer-motion";
 import SectionDivider from "./SectionDivider";
 
-const skillGroups = [
-  {
-    label: "Languages",
-    skills: ["C++", "JavaScript", "Python", "PHP"],
-  },
-  {
-    label: "Frontend",
-    skills: ["React", "Next.js", "HTML/CSS", "Tailwind CSS", "SvelteKit"],
-  },
-  {
-    label: "Backend & Infrastructure",
-    skills: ["Node.js", "Express", "MySQL", "MongoDB", "Prisma", "AWS", "Postman"],
-  },
+const skills = [
+  "Python",
+  "JavaScript",
+  "AWS",
+  "Docker",
+  "Node.js",
+  "React",
+  "Next.js",
+  "MongoDB",
+  "Kubernetes",
+  "Kafka",
+  "Terraform",
+  "Jenkins",
+  "MySQL",
+  "Express",
+  "Git",
+  "Linux",
+  "Grafana",
+  "Prisma",
+  "Tailwind CSS",
+  "C++",
+  "SvelteKit",
+  "HTML/CSS",
+  "Postman",
+  "PHP",
 ];
 
 const fadeUp = {
@@ -28,9 +40,9 @@ const fadeUp = {
   },
 };
 
-const tagVariant = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: { opacity: 1, scale: 1 },
+const cellVariant = {
+  hidden: { opacity: 0, scale: 0.9, filter: "blur(4px)" },
+  visible: { opacity: 1, scale: 1, filter: "blur(0px)" },
 };
 
 export default function Skills() {
@@ -40,9 +52,9 @@ export default function Skills() {
       <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.15 }}
         variants={{
-          visible: { transition: { staggerChildren: 0.12 } },
+          visible: { transition: { staggerChildren: 0.06 } },
         }}
         id="skills"
         className="scroll-mt-20 py-16"
@@ -53,37 +65,28 @@ export default function Skills() {
         >
           Skills
         </motion.h2>
-        <div className="mt-8 flex flex-col gap-8">
-          {skillGroups.map((group) => (
-            <motion.div key={group.label} variants={fadeUp}>
-              <h3 className="mb-3 text-xs uppercase tracking-widest text-muted-foreground/70">
-                {group.label}
-              </h3>
-              <motion.div
-                className="flex flex-wrap gap-2"
-                variants={{
-                  visible: { transition: { staggerChildren: 0.04 } },
-                }}
-              >
-                {group.skills.map((skill) => (
-                  <motion.span
-                    key={skill}
-                    variants={tagVariant}
-                    whileHover={{
-                      scale: 1.05,
-                      borderColor: "hsl(36 80% 55% / 0.5)",
-                      color: "hsl(36 80% 55%)",
-                    }}
-                    transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                    className="cursor-default rounded-sm border border-border px-3 py-1.5 text-sm text-foreground/80 transition-shadow hover:shadow-[0_0_12px_hsl(36_80%_55%/0.15)]"
-                  >
-                    {skill}
-                  </motion.span>
-                ))}
-              </motion.div>
+
+        <motion.div
+          className="mt-8 grid grid-cols-3 gap-px overflow-hidden rounded-md border border-border/50 bg-border/30 sm:grid-cols-4 md:grid-cols-6"
+          variants={{
+            visible: { transition: { staggerChildren: 0.03 } },
+          }}
+        >
+          {skills.map((skill) => (
+            <motion.div
+              key={skill}
+              variants={cellVariant}
+              whileHover={{
+                backgroundColor: "hsl(220 15% 8%)",
+                color: "hsl(36 80% 55%)",
+              }}
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              className="flex items-center justify-center bg-background px-2 py-4 text-sm text-foreground/80 cursor-default"
+            >
+              {skill}
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </motion.section>
     </>
   );

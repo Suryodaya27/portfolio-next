@@ -7,7 +7,7 @@ const projects = [
   {
     title: "LLM Replay",
     description:
-      "Deterministic replay engine for AI agents. Capture, replay, branch, and judge any LLM session across Ollama, OpenAI, and Anthropic with a web playground.",
+      "A transparent HTTP proxy that captures AI agent sessions, shows you the full decision flow in real-time, and flags issues automatically.",
     github: "https://github.com/Suryodaya27/llm-replay",
   },
   {
