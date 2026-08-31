@@ -80,6 +80,10 @@ export default function Skills() {
                 backgroundColor: "hsl(220 15% 8%)",
                 color: "hsl(36 80% 55%)",
               }}
+              whileTap={{
+                backgroundColor: "hsl(220 15% 8%)",
+                color: "hsl(36 80% 55%)",
+              }}
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
               className="flex items-center justify-center bg-background px-2 py-4 text-sm text-foreground/80 cursor-default"
             >
