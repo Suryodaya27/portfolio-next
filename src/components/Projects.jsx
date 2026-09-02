@@ -11,16 +11,16 @@ const projects = [
     github: "https://github.com/Suryodaya27/llm-replay",
   },
   {
+    title: "CineLens",
+    description:
+      "AI-powered movie scene analysis — identify actors, detect objects, analyze scenes, and find shopping links from a single movie frame.",
+    github: "https://github.com/Suryodaya27/cineLens/tree/main",
+  },
+  {
     title: "LeetCode + GFG Post Intelligence",
     description:
       "Agentic RAG system for chatting with interview preparation content from LeetCode and GeeksforGeeks.",
     github: "https://github.com/Suryodaya27/rag_interview_experience",
-  },
-  {
-    title: "AI Journaling App",
-    description:
-      "Backend service that generates AI summaries, insights, and goal recommendations from daily journal entries.",
-    github: "https://github.com/Suryodaya27/ai-journal-backend",
   },
   {
     title: "Prepbuddy",
