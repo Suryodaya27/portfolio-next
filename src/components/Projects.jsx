@@ -14,7 +14,7 @@ const projects = [
     title: "CineLens",
     description:
       "AI-powered movie scene analysis — identify actors, detect objects, analyze scenes, and find shopping links from a single movie frame.",
-    github: "https://github.com/Suryodaya27/cineLens/tree/main",
+    github: "https://github.com/Suryodaya27/cineLens",
   },
   {
     title: "LeetCode + GFG Post Intelligence",
