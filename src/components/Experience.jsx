@@ -9,7 +9,7 @@ const experiences = [
     company: "Nielsen (Gracenote)",
     period: "Aug 2024 — Present",
     description:
-      "Building scalable automation systems and backend APIs. Migrated legacy RPA bots to Python with AWS deployment. Developed APIs that improved control and flexibility for business teams. Designed intelligent data processing pipelines for unstructured content.",
+      "Built and maintained ETL parsers across 8+ source types with AWS Bedrock for auto-generating extraction rules. Led infrastructure upgrades (Ubuntu, MySQL 8.0), set up Jenkins CI/CD pipelines, and migrated 10+ UiPath bots to Python — eliminating licensing costs and cutting deploy times from 45 minutes to a single trigger.",
   },
 ];
 

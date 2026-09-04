@@ -48,14 +48,23 @@ export default function Navbar() {
             href="https://drive.google.com/file/d/1_rJuBA8_HxgzvyXhOHiKajsB4JFAb8Im/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-block rounded-sm border border-foreground/20 px-4 py-1.5 text-sm tracking-wide text-foreground transition-all hover:border-warm hover:text-warm hover:shadow-[0_0_12px_hsl(36_80%_55%/0.15)]"
+            className="rounded-sm border border-foreground/20 px-2.5 py-1.5 text-sm tracking-wide text-foreground transition-all hover:border-warm hover:text-warm hover:shadow-[0_0_12px_hsl(36_80%_55%/0.15)] sm:px-4"
           >
             <motion.span
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.6, duration: 0.4 }}
+              className="flex items-center gap-1.5"
             >
-              Resume
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                className="h-4 w-4 sm:hidden"
+              >
+                <path d="M4.5 3.5A1.5 1.5 0 0 1 6 2h5.586a1 1 0 0 1 .707.293l3.414 3.414a1 1 0 0 1 .293.707V16.5A1.5 1.5 0 0 1 14.5 18H6a1.5 1.5 0 0 1-1.5-1.5v-13ZM9 8.75a.75.75 0 0 1 .75.75v2.19l.72-.72a.75.75 0 1 1 1.06 1.06l-2 2a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 0 1 1.06-1.06l.72.72V9.5A.75.75 0 0 1 9 8.75Z" />
+              </svg>
+              <span className="hidden sm:inline">Resume</span>
             </motion.span>
           </MagneticLink>
         </nav>
