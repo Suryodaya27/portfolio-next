@@ -19,7 +19,7 @@ export default function Navbar() {
       className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-lg"
     >
       <div className="mx-auto flex h-16 max-w-4xl items-center justify-between px-6">
-        <Link href="/" className="group flex items-center gap-2 text-sm font-semibold tracking-widest uppercase text-foreground">
+        <Link href="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="group flex items-center gap-2 text-sm font-semibold tracking-widest uppercase text-foreground">
           <motion.span
             className="inline-block h-2 w-2 rounded-full bg-warm"
             animate={{ scale: [1, 1.2, 1] }}
@@ -60,11 +60,11 @@ export default function Navbar() {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
-                className="h-4 w-4 sm:hidden"
+                className="hidden h-4 w-4"
               >
                 <path d="M4.5 3.5A1.5 1.5 0 0 1 6 2h5.586a1 1 0 0 1 .707.293l3.414 3.414a1 1 0 0 1 .293.707V16.5A1.5 1.5 0 0 1 14.5 18H6a1.5 1.5 0 0 1-1.5-1.5v-13ZM9 8.75a.75.75 0 0 1 .75.75v2.19l.72-.72a.75.75 0 1 1 1.06 1.06l-2 2a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 0 1 1.06-1.06l.72.72V9.5A.75.75 0 0 1 9 8.75Z" />
               </svg>
-              <span className="hidden sm:inline">Resume</span>
+              <span>Resume</span>
             </motion.span>
           </MagneticLink>
         </nav>

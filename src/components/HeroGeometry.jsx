@@ -51,7 +51,7 @@ function generatePositions(count) {
 /* ───────────────────────────────────────────
    Network
    ─────────────────────────────────────────── */
-function Network({ mouse, scrollProgress, reducedMotion, pointCount }) {
+function Network({ mouse, scrollProgress, reducedMotion, pointCount, isMobile }) {
   const pointsRef = useRef();
   const linesRef = useRef();
   const { viewport } = useThree();
@@ -149,7 +149,7 @@ function Network({ mouse, scrollProgress, reducedMotion, pointCount }) {
     pointGeo.attributes.position.needsUpdate = true;
     pointGeo.attributes.color.array = pointColors;
     pointGeo.attributes.color.needsUpdate = true;
-    pointsRef.current.material.opacity = 0.85 * scrollOpacityFactor;
+    pointsRef.current.material.opacity = (isMobile ? 0.5 : 0.85) * scrollOpacityFactor;
 
     let lineIdx = 0;
     for (let i = 0; i < count && lineIdx < maxLines; i++) {
@@ -202,7 +202,7 @@ function Network({ mouse, scrollProgress, reducedMotion, pointCount }) {
     lineGeo.attributes.position.needsUpdate = true;
     lineGeo.attributes.color.array = lineColors;
     lineGeo.attributes.color.needsUpdate = true;
-    linesRef.current.material.opacity = 0.45 * scrollOpacityFactor;
+    linesRef.current.material.opacity = (isMobile ? 0.25 : 0.45) * scrollOpacityFactor;
   });
 
   return (
@@ -284,6 +284,10 @@ export default function HeroGeometry() {
 
   const pointCount = isMobile ? POINT_COUNT_MOBILE : POINT_COUNT_DESKTOP;
 
+  // Don't render Three.js on mobile — no cursor to interact with,
+  // and the WebGL canvas fights the grain overlay + washes out the dark bg
+  if (isMobile) return null;
+
   return (
     <div
       className="pointer-events-none fixed inset-0 z-0"
@@ -300,6 +304,7 @@ export default function HeroGeometry() {
           scrollProgress={scrollProgress}
           reducedMotion={reducedMotion}
           pointCount={pointCount}
+          isMobile={isMobile}
         />
       </Canvas>
     </div>

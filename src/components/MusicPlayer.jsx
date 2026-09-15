@@ -3,17 +3,16 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import YouTube from "react-youtube";
-import { useMusicState } from "./MusicContext";
 
 /* ───────────────────────────────────────────
    Single track — start param skips to the
    main portion (in seconds)
    ─────────────────────────────────────────── */
 const TRACK_ID = "cswfR85D7jM"; // Ravyn Lenae — Love Me Not
-const START_SECONDS = 30;        // skip intro, jump to main portion — adjust as needed
+const START_SECONDS = 25;        // skip intro, jump to main portion — adjust as needed
 
 export default function MusicPlayer() {
-  const { isPlaying, setIsPlaying } = useMusicState();
+  const [isPlaying, setIsPlaying] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
   const playerRef = useRef(null);
 
@@ -67,7 +66,7 @@ export default function MusicPlayer() {
   };
 
   return (
-    <div className="fixed bottom-7 right-7 z-[60]">
+    <div className="fixed bottom-5 right-5 z-[60]">
       {/* YouTube player — positioned offscreen, not display:none
           (hidden elements get muted by some browsers) */}
       <div
@@ -92,13 +91,13 @@ export default function MusicPlayer() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.92 }}
       >
-        {/* Outer golden ring */}
+        {/* Outer golden ring with dark fill */}
         <span
-          className={`absolute inset-0 rounded-full border-2 transition-all duration-500 ${isPlaying
+          className={`absolute inset-0 rounded-full border-2 backdrop-blur-sm transition-all duration-500 ${isPlaying
             ? "border-warm shadow-[0_0_16px_hsl(36_80%_55%/0.2)]"
             : "border-warm/50 hover:border-warm"
             }`}
-          style={{ backgroundColor: "hsl(220 20% 4% / 0.4)" }}
+          style={{ backgroundColor: "hsl(220 20% 6%)" }}
         />
 
         {/* Pulse ring when playing */}
@@ -112,7 +111,7 @@ export default function MusicPlayer() {
 
         {/* Content */}
         {isPlaying ? (
-          <div className="flex items-end gap-[3px] h-4" aria-hidden="true">
+          <div className="relative z-10 flex items-end gap-[3px] h-4" aria-hidden="true">
             {[0, 1, 2].map((i) => (
               <motion.span
                 key={i}
@@ -128,7 +127,7 @@ export default function MusicPlayer() {
             ))}
           </div>
         ) : (
-          <span className="text-warm text-sm font-serif select-none">♪</span>
+          <span className="relative z-10 text-warm text-base font-serif select-none">♪</span>
         )}
       </motion.button>
     </div>

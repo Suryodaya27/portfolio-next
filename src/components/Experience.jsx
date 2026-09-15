@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import SectionDivider from "./SectionDivider";
-import ScrollReveal from "./ScrollReveal";
 
 const experiences = [
   {
@@ -14,8 +13,13 @@ const experiences = [
   },
 ];
 
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } },
+};
+
 const fadeUp = {
-  hidden: { opacity: 0, y: 30, filter: "blur(4px)" },
+  hidden: { opacity: 0, y: 24, filter: "blur(4px)" },
   visible: {
     opacity: 1,
     y: 0,
@@ -28,41 +32,50 @@ export default function Experience() {
   return (
     <>
       <SectionDivider />
-      <ScrollReveal>
-        <section id="experience" className="scroll-mt-20 py-16">
-          <h2 className="mb-2 text-sm uppercase tracking-widest text-muted-foreground">
-            Experience
-          </h2>
-          <div className="mt-8 flex flex-col gap-8">
-            {experiences.map((exp) => (
-              <div
-                key={exp.company}
-                className="group relative border-l-2 border-warm/40 pl-6"
-              >
-                <motion.span
-                  className="absolute -left-[5px] top-2 h-2 w-2 rounded-full bg-warm"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2, type: "spring", stiffness: 300 }}
-                />
-                <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-                  <h3 className="font-serif text-xl text-foreground">
-                    {exp.role}
-                  </h3>
-                  <span className="text-sm text-muted-foreground">{exp.period}</span>
-                </div>
-                <p className="mt-1 text-sm font-medium text-warm/80">
-                  {exp.company}
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  {exp.description}
-                </p>
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={stagger}
+        id="experience"
+        className="scroll-mt-20 py-16"
+      >
+        <motion.h2
+          variants={fadeUp}
+          className="mb-2 text-sm uppercase tracking-widest text-muted-foreground"
+        >
+          Experience
+        </motion.h2>
+        <div className="mt-8 flex flex-col gap-8">
+          {experiences.map((exp) => (
+            <motion.div
+              key={exp.company}
+              variants={fadeUp}
+              className="group relative border-l-2 border-warm/40 pl-6"
+            >
+              <motion.span
+                className="absolute -left-[5px] top-2 h-2 w-2 rounded-full bg-warm"
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3, type: "spring", stiffness: 300 }}
+              />
+              <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                <h3 className="font-serif text-xl text-foreground">
+                  {exp.role}
+                </h3>
+                <span className="text-sm text-muted-foreground">{exp.period}</span>
               </div>
-            ))}
-          </div>
-        </section>
-      </ScrollReveal>
+              <p className="mt-1 text-sm font-medium text-warm/80">
+                {exp.company}
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                {exp.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
     </>
   );
 }

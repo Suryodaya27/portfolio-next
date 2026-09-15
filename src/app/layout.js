@@ -6,7 +6,6 @@ import CursorGlow from "@/components/CursorGlow";
 import PageReveal from "@/components/PageReveal";
 import SceneBackground from "@/components/SceneBackground";
 import MusicPlayer from "@/components/MusicPlayer";
-import { MusicProvider } from "@/components/MusicContext";
 import "./globals.css";
 
 const inter = Inter({
@@ -89,15 +88,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${instrumentSerif.variable} scroll-smooth`}>
       <body className="font-sans">
-        <MusicProvider>
-          <PageReveal />
-          <SceneBackground />
-          <CursorGlow />
-          <Navbar />
-          <main className="mx-auto max-w-4xl px-6 pb-24">{children}</main>
-          <Footer />
-          <MusicPlayer />
-        </MusicProvider>
+        <PageReveal />
+        <SceneBackground />
+        <CursorGlow />
+        <Navbar />
+        <main className="mx-auto max-w-4xl px-6 pb-24">{children}</main>
+        <Footer />
+        <MusicPlayer />
       </body>
     </html>
   );
