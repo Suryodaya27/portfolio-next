@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import SectionDivider from "./SectionDivider";
+import ScrollReveal from "./ScrollReveal";
 
 const skills = [
   "Python",
@@ -49,49 +50,33 @@ export default function Skills() {
   return (
     <>
       <SectionDivider />
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.15 }}
-        variants={{
-          visible: { transition: { staggerChildren: 0.06 } },
-        }}
-        id="skills"
-        className="scroll-mt-20 py-16"
-      >
-        <motion.h2
-          variants={fadeUp}
-          className="mb-2 text-sm uppercase tracking-widest text-muted-foreground"
-        >
-          Skills
-        </motion.h2>
+      <ScrollReveal>
+        <section id="skills" className="scroll-mt-20 py-16">
+          <h2 className="mb-2 text-sm uppercase tracking-widest text-muted-foreground">
+            Skills
+          </h2>
 
-        <motion.div
-          className="mt-8 grid grid-cols-3 gap-px overflow-hidden rounded-md border border-border/50 bg-border/30 sm:grid-cols-4 md:grid-cols-6"
-          variants={{
-            visible: { transition: { staggerChildren: 0.03 } },
-          }}
-        >
-          {skills.map((skill) => (
-            <motion.div
-              key={skill}
-              variants={cellVariant}
-              whileHover={{
-                backgroundColor: "hsl(220 15% 8%)",
-                color: "hsl(36 80% 55%)",
-              }}
-              whileTap={{
-                backgroundColor: "hsl(220 15% 8%)",
-                color: "hsl(36 80% 55%)",
-              }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
-              className="flex items-center justify-center bg-background px-2 py-4 text-sm text-foreground/80 cursor-default"
-            >
-              {skill}
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.section>
+          <div className="mt-8 grid grid-cols-3 gap-px overflow-hidden rounded-md border border-border/50 bg-border/30 sm:grid-cols-4 md:grid-cols-6">
+            {skills.map((skill) => (
+              <motion.div
+                key={skill}
+                whileHover={{
+                  backgroundColor: "hsl(220 15% 8%)",
+                  color: "hsl(36 80% 55%)",
+                }}
+                whileTap={{
+                  backgroundColor: "hsl(220 15% 8%)",
+                  color: "hsl(36 80% 55%)",
+                }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                className="flex items-center justify-center bg-background px-2 py-4 text-sm text-foreground/80 cursor-default"
+              >
+                {skill}
+              </motion.div>
+            ))}
+          </div>
+        </section>
+      </ScrollReveal>
     </>
   );
 }

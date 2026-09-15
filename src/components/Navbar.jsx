@@ -28,12 +28,12 @@ export default function Navbar() {
           SP
         </Link>
 
-        <nav className="flex items-center gap-6 sm:gap-8">
+        <nav className="flex items-center gap-3 sm:gap-6 md:gap-8">
           {links.map(({ href, label }, i) => (
             <MagneticLink
               key={href}
               href={href}
-              className="relative text-sm tracking-wide text-muted-foreground transition-colors hover:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-warm after:transition-all hover:after:w-full"
+              className="relative hidden sm:inline-block text-sm tracking-wide text-muted-foreground transition-colors hover:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-warm after:transition-all hover:after:w-full"
             >
               <motion.span
                 initial={{ opacity: 0, y: -10 }}

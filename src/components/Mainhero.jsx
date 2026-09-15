@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-
 const socials = [
   { name: "LinkedIn", url: "https://www.linkedin.com/in/suryodaya27/" },
   { name: "GitHub", url: "https://github.com/Suryodaya27" },
@@ -34,33 +33,37 @@ export default function Mainhero() {
     offset: ["start start", "end start"],
   });
 
-  // Parallax: glow moves slower than scroll
   const glowY1 = useTransform(scrollYProgress, [0, 1], [0, -80]);
   const glowY2 = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
+  // Hero content drifts up and fades as user scrolls past
+  const contentY = useTransform(scrollYProgress, [0, 0.6], [0, -60]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
     <section ref={ref} className="relative py-16 md:py-24">
       {/* Parallax ambient glow orbs */}
       <motion.div
         style={{ y: glowY1 }}
-        className="pointer-events-none fixed top-0 left-0 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-warm/[0.04] blur-[120px]"
+        className="pointer-events-none fixed top-0 left-0 h-[300px] w-[300px] sm:h-[500px] sm:w-[500px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-warm/[0.04] blur-[80px] sm:blur-[120px]"
       />
       <motion.div
         style={{ y: glowY2 }}
-        className="pointer-events-none fixed top-0 right-0 h-[400px] w-[400px] translate-x-1/3 -translate-y-1/4 rounded-full bg-warm/[0.03] blur-[100px]"
+        className="pointer-events-none fixed top-0 right-0 h-[250px] w-[250px] sm:h-[400px] sm:w-[400px] translate-x-1/3 -translate-y-1/4 rounded-full bg-warm/[0.03] blur-[60px] sm:blur-[100px]"
       />
 
       <motion.div
         variants={stagger}
         initial="hidden"
         animate="visible"
-        className="flex flex-col gap-6"
+        style={{ y: contentY, opacity: contentOpacity }}
+        className="relative flex flex-col gap-6"
       >
         <motion.p
           variants={fadeUp}
           className="text-sm uppercase tracking-widest text-warm"
         >
-          Software Engineer &middot; Mumbai
+          Software Engineer
         </motion.p>
 
         <motion.h1
@@ -91,7 +94,7 @@ export default function Mainhero() {
               animate={{ scale: [1, 1.4, 1] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             />
-            Available for collaboration
+            Open to opportunities &amp; relocation
           </span>
           <a
             href="mailto:pandeysuryodaya@gmail.com"
