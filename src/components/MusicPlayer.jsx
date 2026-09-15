@@ -3,53 +3,66 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import YouTube from "react-youtube";
+import config from "@/data/config.json";
 
-/* ───────────────────────────────────────────
-   Single track — start param skips to the
-   main portion (in seconds)
-   ─────────────────────────────────────────── */
-const TRACK_ID = "cswfR85D7jM"; // Ravyn Lenae — Love Me Not
-const START_SECONDS = 25;        // skip intro, jump to main portion — adjust as needed
+const PLAYLIST = config.playlist;
 
 export default function MusicPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(() =>
+    Math.floor(Math.random() * PLAYLIST.length)
+  );
   const [hasStarted, setHasStarted] = useState(false);
   const playerRef = useRef(null);
+
+  const track = PLAYLIST[currentIndex];
 
   const onReady = useCallback((event) => {
     playerRef.current = event.target;
     event.target.setVolume(50);
   }, []);
 
-  const onStateChange = useCallback(
-    (event) => {
-      // 1 = playing, 2 = paused, 0 = ended
-      if (event.data === 1) setIsPlaying(true);
-      else if (event.data === 2 || event.data === 0) setIsPlaying(false);
-    },
-    [setIsPlaying]
-  );
-
-  // Loop: restart from main portion when song ends
-  const onEnd = useCallback(() => {
-    if (playerRef.current) {
-      playerRef.current.seekTo(START_SECONDS, true);
-      playerRef.current.playVideo();
-    }
+  const onStateChange = useCallback((event) => {
+    if (event.data === 1) setIsPlaying(true);
+    else if (event.data === 2 || event.data === 0) setIsPlaying(false);
   }, []);
+
+  // Shuffle to a different track when one ends
+  const onEnd = useCallback(() => {
+    setCurrentIndex((prev) => {
+      let next;
+      do {
+        next = Math.floor(Math.random() * PLAYLIST.length);
+      } while (next === prev && PLAYLIST.length > 1);
+      return next;
+    });
+  }, []);
+
+  // Auto-play next track after shuffle
+  useEffect(() => {
+    if (playerRef.current && hasStarted) {
+      const t = setTimeout(() => {
+        if (playerRef.current) {
+          playerRef.current.seekTo(track.start || 0, true);
+          playerRef.current.playVideo();
+        }
+      }, 300);
+      return () => clearTimeout(t);
+    }
+  }, [currentIndex, hasStarted, track.start]);
 
   const toggle = useCallback(() => {
     if (!playerRef.current) return;
     if (!hasStarted) {
       setHasStarted(true);
-      playerRef.current.seekTo(START_SECONDS, true);
+      playerRef.current.seekTo(track.start || 0, true);
       playerRef.current.playVideo();
     } else if (isPlaying) {
       playerRef.current.pauseVideo();
     } else {
       playerRef.current.playVideo();
     }
-  }, [isPlaying, hasStarted]);
+  }, [isPlaying, hasStarted, track.start]);
 
   const ytOpts = {
     height: "1",
@@ -61,21 +74,19 @@ export default function MusicPlayer() {
       fs: 0,
       modestbranding: 1,
       rel: 0,
-      start: START_SECONDS,
+      start: track.start || 0,
     },
   };
 
   return (
     <div className="fixed bottom-5 right-5 z-[60]">
-      {/* YouTube player — positioned offscreen, not display:none
-          (hidden elements get muted by some browsers) */}
       <div
         className="absolute overflow-hidden"
         style={{ width: 1, height: 1, top: -9999, left: -9999 }}
         aria-hidden="true"
       >
         <YouTube
-          videoId={TRACK_ID}
+          videoId={track.id}
           opts={ytOpts}
           onReady={onReady}
           onStateChange={onStateChange}
@@ -83,7 +94,6 @@ export default function MusicPlayer() {
         />
       </div>
 
-      {/* Golden ring toggle */}
       <motion.button
         onClick={toggle}
         aria-label={isPlaying ? "Pause music" : "Play music"}
@@ -91,7 +101,6 @@ export default function MusicPlayer() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.92 }}
       >
-        {/* Outer golden ring with dark fill */}
         <span
           className={`absolute inset-0 rounded-full border-2 backdrop-blur-sm transition-all duration-500 ${isPlaying
             ? "border-warm shadow-[0_0_16px_hsl(36_80%_55%/0.2)]"
@@ -100,7 +109,6 @@ export default function MusicPlayer() {
           style={{ backgroundColor: "hsl(220 20% 6%)" }}
         />
 
-        {/* Pulse ring when playing */}
         {isPlaying && (
           <motion.span
             className="absolute -inset-1.5 rounded-full border border-warm/25"
@@ -109,7 +117,6 @@ export default function MusicPlayer() {
           />
         )}
 
-        {/* Content */}
         {isPlaying ? (
           <div className="relative z-10 flex items-end gap-[3px] h-4" aria-hidden="true">
             {[0, 1, 2].map((i) => (
