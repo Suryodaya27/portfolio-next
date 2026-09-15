@@ -2,32 +2,9 @@
 
 import { motion } from "framer-motion";
 import SectionDivider from "./SectionDivider";
+import config from "@/data/config.json";
 
-const projects = [
-  {
-    title: "LLM Replay",
-    description:
-      "A transparent HTTP proxy that captures AI agent sessions, shows you the full decision flow in real-time, and flags issues automatically.",
-    github: "https://github.com/Suryodaya27/llm-replay",
-    demo: "https://www.youtube.com/watch?v=Ind6bZS_7Js",
-    tech: ["Node.js", "TypeScript", "WebSocket", "React", "Ollama", "OpenAI", "Anthropic"],
-  },
-  {
-    title: "CineLens",
-    description:
-      "AI-powered movie scene analysis — identify actors, detect objects, analyze scenes, and find shopping links from a single movie frame.",
-    github: "https://github.com/Suryodaya27/cineLens",
-    demo: "https://youtu.be/IJTzVnWbsN0",
-    tech: ["Python", "FastAPI", "YOLOv8", "InsightFace", "pgvector", "Redis", "Ollama"],
-  },
-  {
-    title: "LeetCode + GFG Post Intelligence",
-    description:
-      "Agentic RAG system for chatting with interview preparation content from LeetCode and GeeksforGeeks.",
-    github: "https://github.com/Suryodaya27/rag_interview_experience",
-    tech: ["Python", "LangChain", "RAG", "Vector DB"],
-  },
-];
+const projects = config.projects;
 
 const stagger = {
   hidden: {},
