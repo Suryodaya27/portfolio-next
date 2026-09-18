@@ -52,11 +52,11 @@ body::before {
 .animated-shimmer {
   background: linear-gradient(
     90deg,
-    hsl(var(--foreground)) 0%,
-    hsl(var(--foreground)) 40%,
-    hsl(var(--warm)) 50%,
-    hsl(var(--foreground)) 60%,
-    hsl(var(--foreground)) 100%
+    hsl(36 60% 60%) 0%,
+    hsl(36 80% 65%) 35%,
+    hsl(40 90% 75%) 50%,
+    hsl(36 80% 65%) 65%,
+    hsl(36 60% 60%) 100%
   );
   background-size: 200% 100%;
   -webkit-background-clip: text;

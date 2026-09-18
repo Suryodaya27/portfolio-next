@@ -2,14 +2,21 @@
 
 import { motion } from "framer-motion";
 import SectionDivider from "./SectionDivider";
+import SectionHeading from "./SectionHeading";
 
 const experiences = [
   {
     role: "Member of Technical Staff",
-    company: "Nielsen (Gracenote)",
+    company: "Gracenote (Nielsen)",
     period: "Aug 2024 — Present",
-    description:
-      "Built and maintained ETL parsers across 8+ source types with AWS Bedrock for auto-generating extraction rules. Led infrastructure upgrades (Ubuntu, MySQL 8.0), set up Jenkins CI/CD pipelines, and migrated 10+ UiPath bots to Python — eliminating licensing costs and cutting deploy times from 45 minutes to a single trigger.",
+    highlights: [
+      "Built and maintained parsers for an ETL pipeline across 10+ source types, each with its own schema, file format, and delivery method. Reduced failed ingestion jobs by ~20%.",
+      "Migrated email ingestion from SMTP to AWS SES with S3 storage and Lambda for attachment extraction. Built an SNS/SQS polling pipeline where clients push schedule data via SNS and a cron routes messages to the parser.",
+      "Migrated 10+ UiPath bots to Python (Playwright, requests, pandas) on AWS with GitLab CI/CD. Added threaded parallelism and eliminated UiPath licensing costs entirely.",
+      "Replaced a blocking SFTP implementation with cURL-based selective retrieval, cutting processing time from hours to minutes on 1,000+ file workloads.",
+      "Automated parsing for 20+ channels with irregular PDF layouts. Built MCP tooling for config verification and extended Bedrock/Claude-assisted mapping recovery.",
+      "Built Jira automation using REST API and Google Apps Script. Auto-creates tickets, reorders backlog, maps fields, and handles real-time status transitions via webhooks.",
+    ],
   },
 ];
 
@@ -40,12 +47,7 @@ export default function Experience() {
         id="experience"
         className="scroll-mt-20 py-16"
       >
-        <motion.h2
-          variants={fadeUp}
-          className="mb-2 text-sm uppercase tracking-widest text-muted-foreground"
-        >
-          Experience
-        </motion.h2>
+        <SectionHeading>Experience</SectionHeading>
         <div className="mt-8 flex flex-col gap-8">
           {experiences.map((exp) => (
             <motion.div
@@ -69,9 +71,18 @@ export default function Experience() {
               <p className="mt-1 text-sm font-medium text-warm/80">
                 {exp.company}
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                {exp.description}
-              </p>
+              <ul className="mt-3 flex flex-col gap-2">
+                {exp.highlights.map((item, i) => (
+                  <motion.li
+                    key={i}
+                    variants={fadeUp}
+                    className="flex gap-2 text-sm leading-relaxed text-muted-foreground"
+                  >
+                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-warm/40" />
+                    {item}
+                  </motion.li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </div>

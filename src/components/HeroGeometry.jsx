@@ -41,8 +41,8 @@ function generatePositions(count) {
   const positions = new Float32Array(count * 3);
   for (let i = 0; i < count; i++) {
     const i3 = i * 3;
-    positions[i3] = Math.random() * 10 - 3;
-    positions[i3 + 1] = (Math.random() - 0.5) * 9;
+    positions[i3] = (Math.random() - 0.5) * 14;
+    positions[i3 + 1] = (Math.random() - 0.5) * 10;
     positions[i3 + 2] = (Math.random() - 0.5) * 4;
   }
   return positions;
@@ -206,7 +206,7 @@ function Network({ mouse, scrollProgress, reducedMotion, pointCount, isMobile })
   });
 
   return (
-    <group position={[1.5, 0, 0]}>
+    <group position={[0, 0, 0]}>
       <points ref={pointsRef}>
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" count={count} array={positions} itemSize={3} />

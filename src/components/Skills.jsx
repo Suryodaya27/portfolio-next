@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import SectionDivider from "./SectionDivider";
+import SectionHeading from "./SectionHeading";
 
 const skills = [
   "Python",
@@ -67,12 +68,7 @@ export default function Skills() {
         id="skills"
         className="scroll-mt-20 py-16"
       >
-        <motion.h2
-          variants={fadeUp}
-          className="mb-2 text-sm uppercase tracking-widest text-muted-foreground"
-        >
-          Skills
-        </motion.h2>
+        <SectionHeading>Skills</SectionHeading>
 
         <motion.div
           className="mt-8 grid grid-cols-3 gap-px overflow-hidden rounded-md border border-border/50 bg-border/30 sm:grid-cols-4 md:grid-cols-6"

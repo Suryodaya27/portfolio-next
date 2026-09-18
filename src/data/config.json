@@ -16,22 +16,20 @@
   "projects": [
     {
       "title": "LLM Replay",
-      "description": "A transparent HTTP proxy that captures AI agent sessions, shows you the full decision flow in real-time, and flags issues automatically.",
+      "description": "A transparent HTTP proxy that captures AI agent sessions across Ollama, OpenAI, and Anthropic with no SDK or code changes. Records requests, tool calls, streaming chunks, and token usage. Includes live WebSocket inspection, automatic issue detection (loops, ignored errors, token waste), session replay without LLM calls, and branching to edit any step and rerun from that point.",
       "github": "https://github.com/Suryodaya27/llm-replay",
       "demo": "https://www.youtube.com/watch?v=Ind6bZS_7Js",
       "tech": [
-        "Node.js",
         "TypeScript",
+        "Node.js",
+        "HTTP Proxy",
         "WebSocket",
-        "React",
-        "Ollama",
-        "OpenAI",
-        "Anthropic"
+        "React"
       ]
     },
     {
       "title": "CineLens",
-      "description": "AI-powered movie scene analysis — identify actors, detect objects, analyze scenes, and find shopping links from a single movie frame.",
+      "description": "Upload a movie frame, identify actors via InsightFace embeddings with pgvector similarity search against TMDB cast data (74-95% confidence), detect objects with YOLOv8, and run scene analysis through a local vision LLM. Redis job queue isolates ML inference from the API, SSE streams 9 live progress stages to the browser, and results are cached with SHA-256 keys for instant repeat lookups.",
       "github": "https://github.com/Suryodaya27/cineLens",
       "demo": "https://youtu.be/IJTzVnWbsN0",
       "tech": [
@@ -41,18 +39,8 @@
         "InsightFace",
         "pgvector",
         "Redis",
-        "Ollama"
-      ]
-    },
-    {
-      "title": "LeetCode + GFG Post Intelligence",
-      "description": "Agentic RAG system for chatting with interview preparation content from LeetCode and GeeksforGeeks.",
-      "github": "https://github.com/Suryodaya27/rag_interview_experience",
-      "tech": [
-        "Python",
-        "LangChain",
-        "RAG",
-        "Vector DB"
+        "Ollama",
+        "Next.js"
       ]
     }
   ]
